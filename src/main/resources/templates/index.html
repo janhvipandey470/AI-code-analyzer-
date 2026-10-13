@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AI Code Analyzer</title>
+
+    <link rel="stylesheet"
+          th:href="@{/style.css}">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <h1>AI Code Analyzer</h1>
+</div>
+
+<div class="container">
+
+    <div class="editor-container">
+
+        <!-- Code Input -->
+
+        <div class="box">
+
+            <h2>Your Code</h2>
+
+            <form th:action="@{/analyze}" method="post">
+
+                <textarea
+                        name="code"
+                        placeholder="Paste your code here..."
+                        th:text="${code}">
+                </textarea>
+
+                <br>
+
+                <button type="submit">
+                    Analyze Code
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- AI Result -->
+
+        <div class="box">
+
+            <h2>AI Analysis</h2>
+
+            <div
+                    th:if="${result != null}"
+                    class="result"
+                    th:text="${result}">
+            </div>
+
+            <div th:if="${result == null}">
+                <p>
+                    Your AI analysis will appear here.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script th:src="@{/script.js}"></script>
+</body>
+
+</html>
